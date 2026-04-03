@@ -6,6 +6,7 @@
 
 import express from "express";
 import { analyzeRepo } from "../controllers/analyze.controller.js";
+import { explainFile } from "../controllers/explain.controller.js";
 
 // Express Router ka instance create kar rahe hain
 const router = express.Router();
@@ -13,13 +14,12 @@ const router = express.Router();
 // ==========================================
 // ENDPOINT DEFINITIONS
 // ==========================================
-/**
- * ROUTE: POST /analyze
- * PURPOSE: User se GitHub repo URL accept karna aur usko analyze karna.
- * LOGIC: Request aane par `analyzeRepo` controller method execute hoga.
- */
-// POST request handle karega
+
+// POST /api/analyze — Repo ka file/folder structure fetch karo
 router.post("/analyze", analyzeRepo);
+
+// POST /api/explain — Kisi ek file ka AI explanation fetch karo (on-demand)
+router.post("/explain", explainFile);
 
 // ==========================================
 // EXPORT MODULE

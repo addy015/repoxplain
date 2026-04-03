@@ -106,8 +106,9 @@ const App = () => {
             <div className="bg-[#121212] rounded-xl p-6 border border-white/5 overflow-x-auto shadow-inner">
               <div className="flex flex-col gap-1 min-w-[300px]">
                 {data.structure.map((node, index) => (
-                  <TreeNode key={index} node={node} />
+                  <TreeNode key={index} node={node} parentPath="" owner={data.owner} repo={data.repo} />
                 ))}
+
               </div>
             </div>
           </div>

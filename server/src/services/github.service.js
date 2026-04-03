@@ -54,3 +54,29 @@ export const getRepoStructure = async (owner, repo, path = "") => {
     return [];
   }
 };
+
+/**
+ * FUNCTION: getFileContent
+ * PURPOSE: GitHub se kisi specific file ka content download karna.
+ * 
+ * @param {string} owner - Repo owner
+ * @param {string} repo - Repo name
+ * @param {string} path - File path
+ * @returns {string} - File content (text)
+ */
+export const getFileContent = async (owner, repo, path) => {
+  try {
+    const url = `https://api.github.com/repos/${owner}/${repo}/contents/${path}`;
+    const response = await axios.get(url, {
+      headers: {
+        Authorization: `token ${process.env.GITHUB_TOKEN}`,
+        Accept: "application/vnd.github.v3.raw", // Direct raw content mango
+      },
+    });
+
+    return response.data;
+  } catch (error) {
+    console.log("Error fetching file content:", error.message);
+    return null;
+  }
+};

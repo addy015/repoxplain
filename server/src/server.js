@@ -1,15 +1,6 @@
-/**
- * ==========================================
- * HIGH-LEVEL OVERVIEW
- * ==========================================
- * Ye file hamare Node.js/Express server ka entry point hai.
- * Yahan par hum base app ko import karke ek specific port par 
- * listen karwate hain taki server aane wali API requests ko handle kar sake.
- */
-
-import app from "./app.js";
 import dotenv from "dotenv";
-dotenv.config();
+dotenv.config({ path: '../.env' });
+import app from "./app.js";
 
 // ==========================================
 // CONFIGURATION SECTION
