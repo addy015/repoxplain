@@ -11,9 +11,7 @@ import { explainFile } from "../controllers/explain.controller.js";
 // Express Router ka instance create kar rahe hain
 const router = express.Router();
 
-// ==========================================
-// ENDPOINT DEFINITIONS
-// ==========================================
+// ENDPOINTS 
 
 // POST /api/analyze — Repo ka file/folder structure fetch karo
 router.post("/analyze", analyzeRepo);
@@ -21,7 +19,4 @@ router.post("/analyze", analyzeRepo);
 // POST /api/explain — Kisi ek file ka AI explanation fetch karo (on-demand)
 router.post("/explain", explainFile);
 
-// ==========================================
-// EXPORT MODULE
-// ==========================================
 export default router;

@@ -13,7 +13,7 @@ File path: ${filePath}
 
 ${fileContent ? `--- FILE CONTENT START ---\n${fileContent}\n--- FILE CONTENT END ---` : ""}
 
-Based on the file ${fileContent ? "code" : "path and name"}, explain in 2-3 simple sentences:
+Based on the file ${fileContent ? "code" : "path and name"}, explain in 3-4 simple sentences:
 1. What this file likely does
 2. Why it exists in the project
 

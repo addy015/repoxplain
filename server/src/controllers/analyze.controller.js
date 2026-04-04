@@ -3,7 +3,6 @@ import { getRepoStructure } from "../services/github.service.js";
 /**
  * FUNCTION: analyzeRepo
  * PURPOSE: GitHub repository URL ko process karke repo ki file/folder structure dena.
- * AI explanation ab yahan nahi hoga — user jab kisi file ka button click kare tab hoga.
  *
  * @param {Object} req - Express request object (req.body.repoUrl chahiye)
  * @param {Object} res - Express response object

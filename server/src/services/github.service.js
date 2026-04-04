@@ -70,7 +70,7 @@ export const getFileContent = async (owner, repo, path) => {
     const response = await axios.get(url, {
       headers: {
         Authorization: `token ${process.env.GITHUB_TOKEN}`,
-        Accept: "application/vnd.github.v3.raw", // Direct raw content mango
+        Accept: "application/vnd.github.v3.raw", // Direct raw content mangenge
       },
     });
 
@@ -79,4 +79,4 @@ export const getFileContent = async (owner, repo, path) => {
     console.log("Error fetching file content:", error.message);
     return null;
   }
-};
+};

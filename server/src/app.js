@@ -1,7 +1,4 @@
 /**
- * ==========================================
- * HIGH-LEVEL OVERVIEW
- * ==========================================
  * Ye file hamari Express application ka core setup hai.
  * Yahan par hum middlewares (jaise CORS, JSON parser) configure karte hain 
  * aur sabhi base routes ko app ke sath register karte hain.
@@ -12,15 +9,9 @@ import express from "express";
 import cors from "cors";
 import analyzeRoutes from "./routes/analyze.routes.js"
 
-// ==========================================
-// APP INITIALIZATION
-// ==========================================
-// Express instance create kar rahe hain
 const app = express();
 
-// ==========================================
 // MIDDLEWARES SETUP
-// ==========================================
 // CORS policy enable kar rahe hain taaki frontend se cross-origin requests aa sakein
 app.use(cors());
 
@@ -38,8 +29,5 @@ app.use(express.json());
  */
 app.use("/api", analyzeRoutes);
 
-// ==========================================
-// EXPORT
-// ==========================================
 // App instance ko export kar rahe hain taaki server.js isko use kar sake
 export default app;
