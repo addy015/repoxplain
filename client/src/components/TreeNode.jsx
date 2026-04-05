@@ -112,43 +112,46 @@ const TreeNode = ({ node, parentPath = "", owner, repo }) => {
           )}
         </span>
 
-        {/* File / folder name */}
-        <span className={`select-none text-sm tracking-wide truncate flex-1 ${isDir ? "text-gray-200" : "text-gray-400"}`}>
-          {node.name}
-        </span>
+        {/* File / folder name + Explain button wrapper */}
+        <span className="flex flex-1 items-center justify-between gap-2 min-w-0">
+          {/* Name — wraps on mobile instead of truncating */}
+          <span className={`select-none text-sm tracking-wide break-all leading-snug ${isDir ? "text-gray-200" : "text-gray-400"}`}>
+            {node.name}
+          </span>
 
-        {/* Explain button — only for files */}
-        {!isDir && (
-          <button
-            onClick={(e) => {
-              e.stopPropagation(); // folder click se conflict na ho
-              handleExplain();
-            }}
-            disabled={loadingExplain}
-            title={explanation ? (showExplanation ? "Hide explanation" : "Show explanation") : "Explain this file"}
-            className="ml-auto shrink-0 opacity-0 group-hover:opacity-100 flex items-center gap-1.5 text-xs font-medium px-2.5 py-1 rounded-md transition-all duration-200
-              bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 hover:text-emerald-300
-              border border-emerald-500/20 hover:border-emerald-500/40
-              disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
-          >
-            {loadingExplain ? (
-              <>
-                <Loader2 size={12} className="animate-spin" />
-                <span>Loading...</span>
-              </>
-            ) : explanation ? (
-              <>
-                {showExplanation ? <ChevronUp size={12} /> : <Sparkles size={12} />}
-                <span>{showExplanation ? "Hide" : "Show"}</span>
-              </>
-            ) : (
-              <>
-                <Sparkles size={12} />
-                <span>Explain</span>
-              </>
-            )}
-          </button>
-        )}
+          {/* Explain button — only for files */}
+          {!isDir && (
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                handleExplain();
+              }}
+              disabled={loadingExplain}
+              title={explanation ? (showExplanation ? "Hide explanation" : "Show explanation") : "Explain this file"}
+              className="shrink-0 opacity-0 group-hover:opacity-100 flex items-center gap-1.5 text-xs font-medium px-2.5 py-1 rounded-md transition-all duration-200
+                bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 hover:text-emerald-300
+                border border-emerald-500/20 hover:border-emerald-500/40
+                disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
+            >
+              {loadingExplain ? (
+                <>
+                  <Loader2 size={12} className="animate-spin" />
+                  <span>Loading...</span>
+                </>
+              ) : explanation ? (
+                <>
+                  {showExplanation ? <ChevronUp size={12} /> : <Sparkles size={12} />}
+                  <span>{showExplanation ? "Hide" : "Show"}</span>
+                </>
+              ) : (
+                <>
+                  <Sparkles size={12} />
+                  <span>Explain</span>
+                </>
+              )}
+            </button>
+          )}
+        </span>
       </div>
 
       {/* Explanation Box — below the file row */}
