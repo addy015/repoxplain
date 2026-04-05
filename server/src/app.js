@@ -13,13 +13,16 @@ const app = express();
 
 // MIDDLEWARES SETUP
 // CORS policy enable kar rahe hain taaki frontend se cross-origin requests aa sakein
-const allowedOrigins = [
-  "http://localhost:5173", // local dev
-  process.env.CLIENT_URL,  // Vercel URL (set in Render dashboard)
-].filter(Boolean);
-
 app.use(cors({
-  origin: allowedOrigins,
+  origin: (origin, callback) => {
+    // Allow requests with no origin (e.g. mobile apps, Postman, curl)
+    if (!origin) return callback(null, true);
+    // Allow localhost (dev) and any vercel.app subdomain (production)
+    if (origin.includes("localhost") || origin.includes("vercel.app")) {
+      return callback(null, true);
+    }
+    callback(new Error("Not allowed by CORS"));
+  },
 }));
 
 // Incoming JSON payload ko parse karne ke liye middleware
